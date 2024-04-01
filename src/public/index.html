@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Registration form</title>
+		<link rel="stylesheet" href="style.css" type="text/css" />
+	</head>
+	<body>
+		<div class="registration-form">
+			<!-- login form -->
+			<div id="loginForm" style="display: none">
+				<h2>Login Form</h2>
+				<form action="/login" method="post">
+					<label for="email">Email:</label>
+					<input type="email" class="email" name="email" required />
+					<label for="password">Password:</label>
+					<input type="password" class="password" name="password" required />
+					<input type="submit" value="Login" />
+				</form>
+			</div>
+
+			<!-- registration form -->
+			<div id="RegistrationForm" style="display: none">
+				<h2>Registration Form</h2>
+				<form action="/register" method="post" onsubmit="return validateForm()">
+					<div class="parent-form">
+						<div class="four-fields">
+							<label for="fname">First Name:</label>
+							<input type="text" id="fname" name="fname" required />
+
+							<label for="lname">Last Name:</label>
+							<input type="text" id="lname" name="lname" required />
+
+							<label for="dob" class="reg">Date of Birth :</label>
+							<input type="date" id="dob" name="dob" required />
+
+							<div class="gender-class">
+								<label for="gender">Gender :</label>
+								<div class="gender-btn">
+									<label for="male">Male</label>
+									<input type="radio" id="male" name="gender" value="male" />
+
+									<label for="female">Female</label>
+									<input
+										type="radio"
+										id="female"
+										name="gender"
+										value="female"
+									/>
+								</div>
+							</div>
+						</div>
+
+						<div class="four-fileds">
+							<label for="phone" class="reg">Phone Number:</label>
+							<input
+								type="tel"
+								id="phone"
+								name="phone"
+								required
+								oninput="validatePhone()"
+							/>
+							<label for="email">Email:</label>
+							<input type="email" class="email" name="email" required />
+							<label for="password">Password:</label>
+							<input
+								type="password"
+								class="password"
+								name="password"
+								required
+								oninput="validatePassword()"
+							/>
+							<label for="confirmpassword">Confirm Password:</label>
+							<input
+								type="password"
+								id="confirmpassword"
+								name="confirmpassword"
+								required
+								oninput="validateConfirmPassword()"
+							/>
+						</div>
+					</div>
+					<div class="btn-register">
+						<input type="submit" value="Register" />
+					</div>
+				</form>
+				<div id="error-message" style="color: red"></div>
+			</div>
+			<div id="buttons-toggle">
+				<button id="loginButton" class="buttons" onclick="showLoginForm()">
+					Login
+				</button>
+				<button
+					id="registerButton"
+					class="buttons"
+					onclick="showRegistrationForm()"
+				>
+					Sign Up
+				</button>
+			</div>
+		</div>
+		<script>
+			function showLoginForm() {
+				document.getElementById("loginForm").style.display = "block";
+				document.getElementById("RegistrationForm").style.display = "none";
+
+				document.getElementById("loginButton").classList.add("active-button");
+				document
+					.getElementById("registerButton")
+					.classList.remove("active-button");
+			}
+
+			function showRegistrationForm() {
+				document.getElementById("loginForm").style.display = "none";
+				document.getElementById("RegistrationForm").style.display = "block";
+
+				document
+					.getElementById("registerButton")
+					.classList.add("active-button");
+				document
+					.getElementById("loginButton")
+					.classList.remove("active-button");
+			}
+			function validatePhone() {
+				var phone = document.getElementById("phone").value;
+				var errorMessage = document.getElementById("error-message");
+				if (phone.length !== 10) {
+					errorMessage.innerHTML = "Phone number must be 10 digits.";
+				} else {
+					errorMessage.innerHTML = "";
+				}
+			}
+
+			function validatePassword() {
+				var passwd = document.getElementsByClassName("password")[1].value;
+				var errorMessage = document.getElementById("error-message");
+				if (passwd.length < 6 || passwd.length > 10) {
+					errorMessage.innerHTML = "Password should be of 6 to 10 characters";
+				} else {
+					errorMessage.innerHTML = "";
+				}
+			}
+			function validateConfirmPassword() {
+				var passwds = document.getElementsByClassName("password")[1].value;
+				var confirmpasswd = document.getElementById("confirmpassword").value;
+				var errorMessage = document.getElementById("error-message");
+				if (passwds !== confirmpasswd) {
+					errorMessage.innerHTML =
+						"Password & confirm password field does not match";
+				} else {
+					errorMessage.innerHTML = "";
+				}
+			}
+
+			function validateForm() {
+				validatePhone();
+				validatePassword();
+				validateConfirmPassword();
+				var errorMessage = document.getElementById("error-message");
+				if (errorMessage.innerHTML !== "") {
+					return false;
+				}
+				return true;
+			}
+
+			// Initially show the registration form
+			showLoginForm();
+		</script>
+	</body>
+</html>

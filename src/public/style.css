@@ -1,0 +1,114 @@
+body {
+	font-family: "Arial", sans-serif;
+	background-color: #f4f4f4;
+	margin: 0;
+	padding: 20px;
+}
+
+.registration-form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 50%;
+	width: 100%;
+}
+.buttons {
+	background-color: #4969aa; /* Green background */
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 10px;
+}
+.buttons:hover {
+	background-color: #21458d;
+}
+
+.active-button {
+	background-color: #21458d;
+}
+h2 {
+	color: #333;
+}
+
+.parent-form {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+}
+
+.gender-class {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 25px;
+}
+.gender-btn {
+	display: flex;
+	flex-wrap: wrap;
+}
+#male {
+	margin-right: 20px;
+}
+form {
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 5px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	margin-bottom: 2px;
+	height: 80%;
+	width: 110%;
+}
+
+label {
+	display: block;
+	margin-top: 5px;
+	color: #666;
+}
+
+input[type="text"],
+input[type="date"],
+input[typpe="radio"],
+input[type="password"],
+input[type="email"],
+input[type="tel"] {
+	width: 100%;
+	padding: 10px;
+	margin-top: 5px;
+	margin-bottom: 15px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	box-sizing: border-box; /* Added for better box sizing */
+}
+.four-fields {
+	margin-right: 20px;
+	width: 45%;
+}
+
+.four-fields:nth-child(2) {
+	margin-left: auto;
+	padding-left: 30px;
+	width: 100%;
+}
+input[type="submit"] {
+	background-color: #5cb85c;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+input[type="submit"]:hover {
+	background-color: #4cae4c;
+}
+
+.btn-register {
+	display: flex;
+	justify-content: center;
+}
